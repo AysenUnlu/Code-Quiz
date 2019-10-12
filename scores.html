@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./style.css">
+    <title>High Scores</title>
+</head>
+<body>
+    <header></header>
+    <section id="content">
+        <div id="welcome">
+            <h1>High Scores: </h1>
+            <textarea readonly rows="5" cols="50" id="tarea"></textarea>
+            <a href="index.html"><input type="submit" id="back" class="button" value="Go Back"></a>
+            <a href="#"><input type="submit" id="clear" class="button" value="Clear HighScores"></a>
+            
+        </div> 
+    </section>
+    <script>
+       /*Get the relevant objects from DOM*/ 
+        backButton=document.getElementById("back");
+        clearButton=document.getElementById("clear");
+        textarea=document.getElementById("tarea");
+        //entry is where I store the objects from local storage
+        var entry={
+                    name:"",        //player name
+                    score:0,        //player score
+        }; 
+
+        var maxEntry=[]             //This array holds the players with max stores
+        var maxScore=0;
+        tarea.innerHTML="";
+        entry=JSON.parse(localStorage.getItem("contenders")); //get the players from local storage and store it in array entry
+
+        function find(e){ //finds the index of player e in the player list
+            for (var j=0;j<entry.length;j++){
+                if ((entry[j].name===e.name) && (entry[j].score===e.score)){
+                    return j;
+                }
+            }
+
+        }
+        
+        function findMax(entry){  //finds the players with max scores
+            for (var i=0;i<entry.length;i++){
+                 if(entry[i].score>=maxScore){
+                      if (entry[i].score==maxScore){
+                          maxEntry.push(entry[i]);
+                      }
+                      else{
+                          maxScore=entry[i].score;
+                          maxEntry=[];
+                          maxEntry.push(entry[i]) ;  
+                      }       
+                 }    
+            }     
+            
+            for (var i=0;i<maxEntry.length;i++){
+                tarea.innerHTML+=maxEntry[i].name+":"+maxEntry[i].score+"\n";  
+             }
+        }
+
+        findMax(entry);
+        //When clear button is clicked the players with max score are removed from local storage. If there are still players, the max score
+        //of remaining players is shown on the page.
+        clearButton.addEventListener("click",function(){
+            
+                for(var i=0;i<maxEntry.length;i++){
+                    var indexf=find(maxEntry[i]);
+                    entry.splice(indexf,1);
+                    localStorage.setItem("contenders",JSON.stringify(entry));
+                    
+                }
+               
+                tarea.innerHTML="";
+                if (entry.length>0){
+                    maxEntry=[];
+                    maxScore=0;
+                    findMax(entry);
+                }          
+                
+               
+        });
+        //when back button is clicked the updated player list is pushed to the storage
+        backButton.addEventListener("click",function(){
+             localStorage.setItem("contenders",JSON.stringify(entry));
+        });
+
+        
+
+
+ 
+    </script>
+</body>
+
+</html>

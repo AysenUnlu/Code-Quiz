@@ -1,0 +1,250 @@
+*{
+    box-sizing:border-box;
+    /*margin:0;*/
+    
+}
+body{
+  font-family: Arial, Verdana, sans-serif;
+  background-color:#b3971c;
+  font-size:1em;
+  padding:10px;
+   width:100vw;
+   height:100vh;
+   overflow:hidden;
+  
+}
+
+header{
+    position:relative;
+    width:100%;
+    height:20vh;
+    color:rgb(39, 1, 39);
+}
+.menu{
+    font-size:1.5em;
+    
+}
+#highScores-link{
+    color:inherit;
+    width:15%;
+    height:20%;
+    text-decoration:none;
+    text-align:center;
+    
+}
+#highScores{
+    margin-left:2.5%;
+    width:15%;
+    height:30%;
+}
+
+#timer{
+    position:absolute;
+    right:0px;
+    top:0px;
+    width:10%;
+    height:30%;
+}
+#timer-span{
+    width:10%;
+    height:20%;
+}
+.button{
+    position:absolute;
+    color:#7a087e;
+    text-shadow:0px 0.01rem 0.01rem #cc9ece;
+    border:0.2rem solid #c3d619;
+    background-color:#a2be24;
+    background: webkit-gradient(linear, left top, left bottom, from(#beeae9), to(#a8cfce));
+    font-size:0.8rem;/**/
+    padding:0.5rem 1rem;
+    width:12vw;
+    text-align:center;
+    border-radius:10%;
+    /*font-weight:bold;*/
+    left:20vw;/*47%*/
+    
+   
+}
+
+.button:hover{
+    color:#7a087e;
+    border: 1px solid #a4a4a4;
+    border-top: 2px solid #bbce11;
+    background-color:#a2c212;
+    background: webkit-gradient(linear, left top, left bottom, from(#a8cfce), to(#beeae9));
+    font-weight:bold;
+}
+#welcome{
+    position:relative;
+    text-align:center;
+    max-width:50vw;
+    min-height:45vh;
+    text-align:center;
+    overflow:auto;
+   
+
+}
+#content{
+    position:relative;
+    max-width:50vw;
+    min-height:45vh;
+    /*height:auto;*/
+    background-color:#11d473;
+    vertical-align :middle;
+    padding:0.3rem;
+    margin:2rem auto;
+    font-size:1.2em;
+    box-shadow:0 0 0 10px green;
+    overflow:auto;
+   
+}
+
+#quizTime{
+    width:50vw;
+    height:auto;
+    background-color:#11d473;
+    padding:0.5rem;
+    font-size:1.2em;
+    text-align:left;
+    display:none;
+
+    box-shadow:0 0 0 10px green;
+}
+.hide{
+    display:none;
+}
+
+h1{
+    margin:2rem;
+}
+
+h2{
+    font-size:1em;
+ 
+}
+ol{
+    margin-left:20px;
+    padding-left:15px;
+    line-height:0.5rem;
+}
+li{
+    width:auto;
+    height:auto;
+    
+}
+button{
+
+    background-color:rgb(201, 137, 201);
+    border:0.5px solid red;
+    width:auto;
+    max-height:auto;
+    display:block;
+    padding:0.5rem 2rem;
+    border-radius:4px;
+    text-align:left;
+    font-size:1rem;
+    margin-bottom:1rem;
+
+}
+hr{
+    border: 0.5px solid red;
+    margin-top:3em;
+}
+.answer{
+    font-weight:bold;
+    margin:0.5em auto 2em 1.5em ;
+}
+#initials{
+    height:2em;
+    width:12em;
+    margin-left:1em;
+}
+
+textarea{
+   
+    width:25vw;
+    margin-left:-10em;
+    margin-bottom:2em;
+    text-align:center;
+    font-weight:bold;
+    font-size:12px;
+    margin:0 auto;
+   
+   
+}
+#back{
+    position:absolute;
+    padding:0.3rem;
+    left:-25vw;
+    top:6rem;
+   
+
+}
+#clear{
+    position:absolute;
+    padding:0.3rem;
+    top:6rem;
+    left:-10vw;
+    
+
+    
+   
+}
+p{
+    padding:0.5rem;
+    margin:1rem 0.5rem;
+}
+a{
+    position:absolute;
+}
+
+
+
+@media screen and (max-width:992px){
+    #timer{
+        margin-right:3em;
+    }
+    .button{
+        padding:0;
+    }
+    
+    p{
+        padding:0;
+    }
+    ol{
+        margin:0 auto;
+       
+    }
+
+
+    @media screen and (max-width:768px){
+       
+        #clear,#back{
+          font-size:0.6rem;
+        }
+        .button{
+            font-size:0.7rem;
+        }
+       
+    }    
+
+    @media screen and (max-width:1200px){
+       #clear{
+         padding:0rem; 
+         width:19vw;
+         top:8rem;
+         left:-25vw;
+       }
+       #back{
+         padding:0rem;
+         width:19vw;
+        
+       }      
+
+    }    
+   
+    
+}
+
+
