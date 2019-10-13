@@ -36,18 +36,18 @@ This is a timer based quiz application with multiple-choice questions that store
 
     - Let's assume another player with initials "FU" took the test, the screenshots are shown below:
 
-     ![Score Page](images/scorePage2.png)
-     ![Highest Score Page](images/HighScores2.png)
+     ![Score Page2](images/scorePage2.png)
+     ![Highest Score Page2](images/HighScores2.png)
 
     - Let's also assume, you took the quiz again and scored lower as seen on the screenshots below. You wanted to delete the highest score, you pressed the delete button and second highest will be your score. It's not 138 because you took the test again and scored lower.
 
-     ![Score Page](images/scorePage3.png)
-     ![Highest Score Page](images/HighScores3.png)
-     ![Highest Score Page](images/HighScores4.png)
+     ![Score Page3](images/scorePage3.png)
+     ![Highest Score Page3](images/HighScores3.png)
+     ![Highest Score Page4](images/HighScores4.png)
     
     - If you hot the delete button again, since there are no other players, you'll be presented with an empty list
 
-     ![Highest Score Page](images/HighScores5.png)
+     ![Highest Score Page5](images/HighScores5.png)
 
 ---------------------------------------------------------------------------------------------------------------------------
 
