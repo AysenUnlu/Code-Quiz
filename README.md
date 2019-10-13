@@ -48,7 +48,7 @@ This is a timer based quiz application with multiple-choice questions that store
 
      ![Highest Score Page4](images/HighScores4.png)
     
-    - If you hot the delete button again, since there are no other players, you'll be presented with an empty list
+    - If you hit the delete button again, since there are no other players, you'll be presented with an empty list
 
      ![Highest Score Page5](images/HighScores5.png)
 
