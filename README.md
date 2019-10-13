@@ -1,110 +1,65 @@
-# PasswordGenerator
+# CODE QUIZ
 
 ## About: ##
 
-This is an application that generates a random password based on user-selected criteria. This app runs in the browser and features dynamically updated HTML and CSS powered by the JavaScript code.
-
-The user will be prompted to choose from the following password criteria:
-
-* Length (must be between 8 and 128 characters)
-
-* Character type:
-
-  * Special characters
-  * Numeric characters
-  * Lowercase characters
-  * Uppercase characters
-
-The application validates user input and ensures that at least one character type is selected.
-The user will also have the option to click a button to copy the password to their clipboard.
-The application is responsive and it adapts to multiple screen sizes.
+This is a timer based quiz application with multiple-choice questions that stores high scores client-side. The application is responsive ensuring that it adapts to multiple screen sizes. This application is implemented using HTML, CSS and JAVASCRIPT.
 
 ## Installation: ##
 
     You can check the running project:
     
-    https://aysenunlu.github.io/PasswordGenerator/
+    https://aysenunlu.github.io/Code-Quiz/
 
 ## Usage: ##
 
-   - When the user runs the application, he's prompted to choose from the following password criteria:
+   - When the user runs the application, he lands on a page and is presented with a call-to-action to "Start Quiz." Also he has the navigation option to "View Highscores". The "Time" value is set to 0, since he has not started the quiz yet
 
-     ![Criteria page](Assets/images/userInputCriteria.png)
+     ![Start Quiz](images/welcomePage.png)
      
      ---------------------------------------------------------------------------------------------------
 
-   - If the user enters not a number to the password length area, or his password length specification is not between 8-128 characters or he does not specify at least one Character type criteria, an error message is shown:
+   - Clicking the "Start Quiz" button presents the user with a series of questions. The timer is initialized with a value and immediately begins countdown. User clicks the answer and at the buttom of the page, he's prompted if his answer was correct or not. Since the validation message is shown for only couple of seconds, the screenshot has not been included.
 
-     ![Non-Number Input For Password Length](Assets/images/PwdLengthTest1_before.png)
-
-     ![Message for Non-Number Input](Assets/images/PwdLengthTest1_after.png)
+     ![Questions](images/question.png)
 
      --------------------------------------------------------------
 
-     ![Short Password Length](Assets/images/PwdLengthTest2_before.png)
+   - The player's score is calculated by the time remaining. Answering quickly and correctly results in a higher score. Answering incorrectly results in a time penalty (15 seconds are subtracted from time remaining). When the time runs out and/or all questions are answered, the user is presented with their final scores and asked to enter their initials. Their final scores and initials are stored in local storage. If the user took the quiz before, his previous score will be overwritten with his last score. 
 
-     ![Message for Short Password Length](Assets/images/PwdLengthTest2_after.png)
-     
-      -------------------------------------------------------------
+     ![Score Page](images/scorePage1.png)
 
-     ![Long Password Length](Assets/images/PwdLengthTest3_before.png)
-
-     ![Message for Long Password Length](Assets/images/PwdLengthTest3_after.png)
-     
-     --------------------------------------------------------------
-
-     ![Non specified Character Type](Assets/images/CriteriaTest_before.png)
-
-     ![Message for Non specified Character Type](Assets/images/CriteriaTest_after.png)
-     
      -----------------------------------------------------------------------------------------------------
+
+   - When the user hits the submit button, he sees the list of users with highest scores. If his score is bigger or equal to his opponents, then he'll be able to see his score in the list. The user has the option to go back to "Start Quiz" page where he can take the quiz again. He also has the option to delete the highest score. When the highest score is deleted,the user with the score is deleted from the storage. If there are more people who took the quiz, the second highest score is displayed;if not empty list will be shown
+
+     ![Highest Score Page](images/HighScores1.png)
+
+    - Let's assume another player with initials "FU" took the test, the screenshots are shown below:
+
+     ![Score Page](images/scorePage2.png)
+     ![Highest Score Page](images/HighScores2.png)
+
+    - Let's also assume, you took the quiz again and scored lower as seen on the screenshots below. You wanted to delete the highest score, you pressed the delete button and second highest will be your score. It's not 138 because you took the test again and scored lower.
+
+     ![Score Page](images/scorePage3.png)
+     ![Highest Score Page](images/HighScores3.png)
+     ![Highest Score Page](images/HighScores4.png)
     
-  - If the users enters valid criteria for the password, he's provided with a random password that meets his criteria so he can copy to the clipboard. When copy to the clipboard button is pressed, the user is asked if he wants to generate another password. When user enters the criteria for the password, the copy to clipboard button will be disabled because the password has not been generated yet. And when password is shown , generate button will be disabled because we can not generate a password without user inputting criteria.
+    - If you hot the delete button again, since there are no other players, you'll be presented with an empty list
 
-      ![8 Character-All Lowercase Password](Assets/images/Lowercase8_before.png)
+     ![Highest Score Page](images/HighScores5.png)
 
-      ![Corresponding Password](Assets/images/Lowercase8_after.png)
-
-      ![Copying to Clipboard](Assets/images/Lowercase8_after2.png)
-
-      ----------------------------------------------------------------------------------
-
-      ![8 Character Password with Numbers, Lowercase and Uppercase Letters](Assets/images/NumLowUp8_before.png)
-
-      ![Corresponding Password](Assets/images/NumLowUp8_after.png)
-
-      ----------------------------------------------------------------------------------
-
-      ![10 Character Password with Numbers; Lowercase,Uppercase Letters and Symbols](Assets/images/AllCriteria10_before.png)
-
-      ![Corresponding Password](Assets/images/AllCriteria10_after.png)
-
-      -----------------------------------------------------------------------------------
-
-      ![128 Character Password with Numbers, Lowercase Letters and Symbols](Assets/images/AllButUp128_before.png)
-
-      ![Corresponding Password](Assets/images/AllButUp128_after.png)
+---------------------------------------------------------------------------------------------------------------------------
 
 ## How: ##
 
-This application runs in the browser. HTML and CSS are dynamically updated using JavaScript. 
+* When the button to start the quiz is clicked, the event listener causes the function "quizShow" to run. The purpose of this function is to hide the welcome page ,start the timer and show the questions. When the timer is set, it starts to count down immidiately which is shown on the right top corner of the page. If the timer runs out, we stop the timer. Clear the screen and at final step, dynamically create the page where you input your initials. There may be occasions when time left is negative, especially if you run out of time and answered question wrong;in that case, the timer i set to 0.
 
-When the page loads for the first time,the HTML code snippet that's related to showing generated password is hidden and the one related for the user to enter criteria is shown. The body of the web page is kept hidden until the full page and CSS files are loaded. Once everything is loaded, onload function turns the body visible. Web browser remains empty until everything pops up on the screen.
+* If the user finishes the quiz before the time runs out, final step is executed and he'll be asked to enter his initials on the dynamically created page. Otherwise to show the question, paragraph element is created and the question is grabbed from the question array and Options are shown too. For each option a list elements are created inside buttons and populated with the corresponding options for the question. And id attribute is created for the button and set to the index of the question, so when it's clicked we'll know which question object to go to. When the answer is clicked, it'll fire up "validate" function. Here we'll figure out which button is clicked by its id and get the corresponding answer from the question object array and compare it to the user's answer. If they're equal, then a response will be created and added dynamically to the end of options. If the user's answer is wrong, then 15 seconds will be subtracted from the time left. Then the page will be cleared, but not until we wait 1 second for user to see the answer. Another question will be shown.
 
-After user enters criteria for the password and clicks on the generate button, "displayPassword()" function is fired up. First it's made sure that user entered valid criteria. Then an array is formed which contains the arrays of character type criteria. Since the characters will be chosen randomly from this array, to make sure all the user criteria represented in the password; first 4 characters are chosen randomly from character type arrays and rest chosen from random characters from random criteria. The problem with this approach is that there's a pattern. We'll know the order of criteria. To break this i randomly distribute first 4 characters, so the password to be generated will be completely random with no predetermined patterns. Since String types are immutable;to redistribute, I had to form an array from the string, changed the order of the characters and converted that to string again after eliminating the commas.
+* When the time runs out or the player finishes all the questions, he;s presented with a dynamically created page and asked to enter his initials. When he hits submit button, an entry object is formed with fields name and score. First, then we get the players which are addressed as contenders from the local storage. We search if the user exits. If that's the case his entry is replaced, other wise pushed to the array of objects and stored in the local storage.
 
-At last user input part is hidden and password showing part is shown. Here user can copy the password to the clipboard by clicking on the "Copy to Clipboard" button. Then "copyClipboard" function is fired up. In that function, the selection range is specified, textarea is selected and copied to the clipboard and user is prompted whether he wants to generate another password. If he does, the user input page is shown again; if not, the password page is kept with the password being highlighted. 
-
-## Credits: ## 
-
-I'm forever greatful for our instructor Omar Patel and TA's Tyler Bray and Matthew Calimbas for their feedback and recommendations on how I can improve my application and next steps that can be taken.
-
-I conducted a lot of google searches during the implementation of this application. The web sites that I found useful are listed below:
-
-  * https://www.w3schools.com/howto/howto_js_copy_clipboard.asp
-  * https://stackoverflow.com/questions/3221561/eliminate-flash-of-unstyled-content
-  * https://www.w3schools.com/jsref/jsref_replace.asp
-
+* "scores.html" is shown on top of the page which lists high scores with go back and delete buttons. We get all the contenders from the storage. We find the players with maximum score or scores and show it on the text area. When clear button is clicked, the highest score or scores are deleted from the local storage and text area is populated with the next highest score or scores.
 
 ## Licence: ##
 
@@ -112,4 +67,4 @@ Anybody is welcomed to copy code snippets and test it out.
 
 ## Limitations: ##
 
-When the page is loaded there is a flash of empty content in a split second.
+ None
