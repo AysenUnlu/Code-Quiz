@@ -8,7 +8,7 @@ This is a timer based quiz application with multiple-choice questions that store
 
     You can check the running project: 
   
-  [https://aysenunlu.github.io/Code-Quiz/]https://aysenunlu.github.io/Code-Quiz/
+  [https://aysenunlu.github.io/Code-Quiz/](https://aysenunlu.github.io/Code-Quiz/)
 
 ## Usage: ##
 
